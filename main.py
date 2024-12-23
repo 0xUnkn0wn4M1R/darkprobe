@@ -1,51 +1,54 @@
-import os
-from modules.netscan import perform_network_scan
-from modules.brute_force import brute_force_ssh
+import argparse
+import sys
+
+# Import your functions for each module (network scan, brute force, hash cracking, etc.)
+from modules.netscan import network_scan
+from modules.brute_force import ssh_brute_force
 from modules.hash_cracker import crack_hash
-from modules.dir_brute_force import brute_force_directories
+from modules.dir_brute_force import dir_brute_force
 
-def show_menu():
-    print("\nDarkProbe - Select an option:")
-    print("1. Network Scan")
-    print("2. SSH Brute Force")
-    print("3. Hash Cracking (MD5)")
-    print("4. Directory Brute Force")
-    print("5. Exit")
-
+# Define the main function
 def main():
-    while True:
-        show_menu()
-        choice = input("Enter your choice (1-5): ")
+    # Display tool name and copyright information
+    print("""
+    ***************************************
+    DarkProbe - A Cybersecurity Tool
+    ***************************************
+    Copyright (c) 0xUnkn0wn4M1R
+    ***************************************
+    """)
 
-        if choice == '1':
-            host = input("Enter target IP or host for network scan: ")
-            perform_network_scan(host)
-        
-        elif choice == '2':
-            host = input("Enter the host/IP for SSH brute force: ")
-            username = input("Enter the username for SSH: ")
-            with open('wordlists/passwords.txt', 'r') as file:
-                passwords = [line.strip() for line in file.readlines()]
-            brute_force_ssh(host, username, passwords)
+    # Create the argument parser
+    parser = argparse.ArgumentParser(description="DarkProbe - A cybersecurity tool for network scanning, brute forcing, hash cracking, and directory brute forcing.")
 
-        elif choice == '3':
-            hash_to_crack = input("Enter the MD5 hash to crack: ")
-            with open('wordlists/passwords.txt', 'r') as file:
-                wordlist = [line.strip() for line in file.readlines()]
-            crack_hash(hash_to_crack, wordlist)
+    # Add arguments/flags for each option
+    parser.add_argument('-n', '--network', help='Perform a network scan on a specific IP or host', type=str)
+    parser.add_argument('-b', '--bruteforce', help='Perform SSH brute force on a target server', type=str)
+    parser.add_argument('-H', '--hash', help='Crack an MD5 hash', type=str)
+    parser.add_argument('-d', '--directory', help='Perform a directory brute force on a website', type=str)
 
-        elif choice == '4':
-            base_url = input("Enter the base URL (e.g., http://example.com): ")
-            with open('wordlists/directories.txt', 'r') as file:
-                wordlist = [line.strip() for line in file.readlines()]
-            brute_force_directories(base_url, wordlist)
+    # Parse the arguments
+    args = parser.parse_args()
 
-        elif choice == '5':
-            print("Exiting DarkProbe. Goodbye!")
-            break
+    # Check which flag is provided and run the corresponding function
+    if args.network:
+        print(f"Performing network scan on {args.network}...")
+        network_scan(args.network)  # Call your network scan function from modules
 
-        else:
-            print("Invalid choice! Please try again.")
+    elif args.bruteforce:
+        print(f"Starting SSH brute force attack on {args.bruteforce}...")
+        ssh_brute_force(args.bruteforce)  # Call your brute force function from modules
+
+    elif args.hash:
+        print(f"Cracking MD5 hash: {args.hash}...")
+        crack_hash(args.hash)  # Call your hash cracking function from modules
+
+    elif args.directory:
+        print(f"Performing directory brute force on {args.directory}...")
+        dir_brute_force(args.directory)  # Call your directory brute force function from modules
+
+    else:
+        print("No valid flag provided. Use -h or --help for help.")
 
 if __name__ == "__main__":
     main()
