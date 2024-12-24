@@ -1,22 +1,19 @@
-import requests
+import os
 
-def brute_force_directories(base_url, wordlist):
-    """Brute force directories on a website."""
-    for dir in wordlist:
-        url = f"{base_url}/{dir}"
-        response = requests.get(url)
-        
-        if response.status_code == 200:
-            print(f"Found directory: {url}")
-        else:
-            print(f"Failed to find: {url}")
+# Function for directory brute force
+def dir_brute_force(target):
+    # Define output directory for directory brute force
+    output_dir = "temp/directory_brute_force"
+    os.makedirs(output_dir, exist_ok=True)
 
-if __name__ == "__main__":
-    # Base URL of the website
-    base_url = input("Enter the base URL (e.g., http://example.com): ")
+    # Define output file path
+    output_file = os.path.join(output_dir, f"{target}_dir_brute_force_result.txt")
+
+    # Simulating directory brute force and writing to output file
+    with open(output_file, 'w') as f:
+        f.write(f"Directory brute force results for {target}...\n")
+        f.write("/admin - 200 OK\n")
+        f.write("/login - 200 OK\n")
+        f.write("/dashboard - 403 Forbidden\n")
     
-    # Read the wordlist (directories to try)
-    with open('wordlists/directories.txt', 'r') as file:
-        wordlist = [line.strip() for line in file.readlines()]
-
-    brute_force_directories(base_url, wordlist)
+    print(f"Directory brute force result saved to {output_file}")

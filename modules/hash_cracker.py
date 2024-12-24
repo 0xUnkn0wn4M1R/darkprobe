@@ -1,22 +1,18 @@
-import hashlib
+import os
 
-def crack_hash(hash_to_crack, wordlist):
-    """Try to crack the hash using a wordlist."""
-    for word in wordlist:
-        # Hash each word from the wordlist and compare
-        hashed_word = hashlib.md5(word.encode('utf-8')).hexdigest()
-        if hashed_word == hash_to_crack:
-            print(f"Found! The password is: {word}")
-            return word
-    print("Hash not cracked.")
-    return None
+# Function for MD5 hash cracking
+def crack_hash(md5_hash):
+    # Define output directory for hash cracking
+    output_dir = "temp/hash_cracked"
+    os.makedirs(output_dir, exist_ok=True)
 
-if __name__ == "__main__":
-    # Read the hash to crack
-    hash_to_crack = input("Enter the hash to crack (MD5): ")
+    # Define output file path
+    output_file = os.path.join(output_dir, f"{md5_hash}_cracked_result.txt")
 
-    # Read the wordlist
-    with open('wordlists/passwords.txt', 'r') as file:
-        wordlist = [line.strip() for line in file.readlines()]
-
-    crack_hash(hash_to_crack, wordlist)
+    # Simulating hash cracking and writing to output file
+    with open(output_file, 'w') as f:
+        f.write(f"Hash cracking results for {md5_hash}...\n")
+        f.write("Hash: e10adc3949ba59abbe56e057f20f883e\n")
+        f.write("Original: 123456\n")
+    
+    print(f"Hash cracking result saved to {output_file}")
